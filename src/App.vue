@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <img width="25%" src="./assets/logo.png">
-    <HelloWorld msg="Hello Vue in CodeSandbox!" />
+    <img class="nng-logo" src="./assets/logo.png">
+    <h1 class="nng-title">Nonograms game PoC</h1>
+    <h4 class="nng-subtitle">Built in Vue.js version 2.6</h4>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
-
 export default {
-  name: "App",
-  components: {
-    HelloWorld
-  }
+  name: "App"
 };
 </script>
 
@@ -21,8 +18,16 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 1em;
+}
+.nng-title,
+.nng-subtitle {
+  text-align: left;
+}
+.nng-logo {
+  width: 5em;
+  float: left;
+  margin-right: 1em;
 }
 </style>
