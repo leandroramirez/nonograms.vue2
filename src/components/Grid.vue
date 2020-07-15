@@ -1,5 +1,6 @@
 <template>
   <div class="nng-grid" :style="`grid-template-columns: repeat(${pixelmap.width}, 1fr);`">
+    <!-- eslint-disable-next-line vue/require-v-for-key -->
     <div
       v-for="(value, index) of userPixels"
       class="nng-square"
