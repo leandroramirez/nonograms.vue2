@@ -30,7 +30,7 @@ const router = new Router({
   ]
 });
 
-router.afterEach(to => {
+router.afterEach((to, from) => {
   Vue.nextTick(() => {
     document.title =
       (!to.meta || !to.meta.title ? "" : to.meta.title + " - ") + siteTitle;

@@ -1,7 +1,7 @@
 const nonograms = [
   {
     id: "easy.bw",
-    name: "Easy B&W",
+    name: "Easy",
     // Is a pixelmap
     width: 3,
     height: 3, // This property could be self-calculated... but well, that's fine too
@@ -13,7 +13,7 @@ const nonograms = [
   },
   {
     id: "normal.bw",
-    name: "Normal B&W",
+    name: "Normal",
     // Is a pixelmap
     width: 15,
     height: 15, // This property could be self-calculated... but well, that's fine too
@@ -41,7 +41,7 @@ const nonograms = [
   },
   {
     id: "normal.c",
-    name: "Boca Junios (color selection not implemented)",
+    name: "Boca Junios",
     // Is a pixelmap
     width: 15,
     height: 15, // This property could be self-calculated... but well, that's fine too

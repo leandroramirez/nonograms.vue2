@@ -11,7 +11,7 @@
         >{{ nonogram.name }}</router-link>
         <span
           class="nng-details"
-        >{{ nonogram.width }}x{{ nonogram.height }}, {{ Object.keys(nonogram.colors).length }} colors.</span>
+        >{{ nonogram.width }}x{{ nonogram.height }}, {{ Object.keys(nonogram.colors).length > 2 ? Object.keys(nonogram.colors).length + ' colors' : 'b/w' }}.</span>
       </li>
     </ul>
   </div>
@@ -34,6 +34,7 @@ export default {
   font-weight: bold;
   text-decoration: none;
 }
+
 .nng-home .nng-details {
   margin-left: 0.5em;
 }

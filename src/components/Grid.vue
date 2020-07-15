@@ -1,81 +1,70 @@
 <template>
-  <div class="nng-grid" :style="`grid-template-columns: repeat(${pixelmap.width}, 1fr);`">
-    <!-- eslint-disable-next-line vue/require-v-for-key -->
-    <div
-      v-for="(value, index) of userPixels"
+  <div class="nng-grid" :style="`grid-template-columns: repeat(${width}, 1fr);`">
+    <svg
+      v-for="(value, index) of pixels"
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
       class="nng-square"
-      :style="`background: ${pixelmap.colors[value]}`"
-      @click="click(index)"
-    ></div>
-    <div>{{ isResolved ? 'RESUELTO' : 'todavia no' }}</div>
+      :style="`background: ${colors[value]}; color: ${textColors[value]};`"
+      @mousedown="onMouseDown(index)"
+      @mouseenter="onMouseEnter(index)"
+    >
+      <foreignObject width="100%" height="100%">{{ value === crossColorKey ? 'X': '' }}</foreignObject>
+    </svg>
   </div>
 </template>
 
 <script>
+import { crossColorKey } from "@/consts/reservedColorKeys.js";
+
 export default {
   props: {
-    msg: String
+    pixels: Array,
+    width: Number,
+    colors: Object,
+    textColors: Object
   },
   data() {
     return {
-      pixelmap: {
-        width: 3,
-        height: 2,
-        colors: {
-          "0": "#ffffff", // The first item is the background color
-          "1": "#000000"
-        },
-        pixels: Array.from("010101")
-      },
-      selectedValue: null,
-      userPixels: null
+      newColor: null
     };
   },
-  created() {
-    this.selectedValue = Object.keys(this.pixelmap.colors)[1];
-    this.userPixels = Array(this.pixelmap.pixels.length).fill(
-      this.backgroundValue
-    );
-  },
   methods: {
-    click(index) {
-      const currentValue = this.userPixels[index];
-      const newValue =
-        currentValue === this.selectedValue
-          ? this.backgroundValue
-          : this.selectedValue;
-
-      this.$set(this.userPixels, index, newValue);
+    onMouseDown(index) {
+      this.$emit("click", index);
+      this.newColor = this.pixels[index];
+    },
+    onMouseEnter(index) {
+      if (this.newColor !== null) {
+        this.$emit("setColor", { index, newColor: this.newColor });
+      }
+    },
+    onMouseUp() {
+      this.newColor = null;
     }
   },
   computed: {
-    backgroundValue() {
-      return Object.keys(this.pixelmap.colors)[0];
-    },
-    isResolved() {
-      const correctPixels = this.pixelmap.pixels;
-      return (
-        this.userPixels &&
-        this.userPixels.every((value, index) => value === correctPixels[index])
-      );
+    crossColorKey() {
+      return crossColorKey;
     }
+  },
+  created() {
+    document.addEventListener("mouseup", this.onMouseUp);
+  },
+  destroyed() {
+    document.removeEventListener("mouseup", this.onMouseUp);
   }
 };
 </script>
 
-<style scoped>
+<style>
 .nng-grid {
   display: grid;
+  grid-gap: 1px;
+  background: #333;
+  border: 1px solid #333;
 }
-.nng-square {
+.nng-grid .nng-square {
   cursor: pointer;
-  border-radius: 10%;
-  border: 2px solid #000; /* It's not possible to use percentage unit as border width (as ussually, there are hacks, but I'm not going to implement one of them at least in this version) */
-}
-
-.nng-square:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
+} 
 </style>

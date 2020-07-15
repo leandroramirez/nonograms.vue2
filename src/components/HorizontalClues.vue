@@ -1,7 +1,7 @@
 <template>
   <div class="nng-horizontal-clues" :style="`grid-template-columns: repeat(${maxLength}, 1fr);`">
     <template v-for="clueGroup in clues">
-      <div v-for="clue in maxLength - clueGroup.length" class="nng-square"/>
+      <div v-for="clue in maxLength - clueGroup.length" class="nng-square nng-square-empty"/>
       <Clue v-for="clue in clueGroup" :clue="clue" :colors="colors"/>
     </template>
   </div>
@@ -25,5 +25,8 @@ export default {
 <style>
 .nng-horizontal-clues {
   display: grid;
+  grid-gap: 1px;
+  background: #333;
+  border: 1px solid #333;
 }
 </style>
