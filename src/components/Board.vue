@@ -27,7 +27,7 @@
     <h4>
       Colors:
       <template v-for="(color, colorKey, index) in nonogram.colors">
-        <label v-if="index">
+        <label v-if="index" :key="colorKey">
           <input type="radio" v-model="selectedColor" :value="colorKey" />
           <span class="nng-square nng-color-option" style="display:inline-block; width: 1em; height: 1em;" :style="`background: ${color};`"></span>
         </label>

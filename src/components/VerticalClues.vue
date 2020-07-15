@@ -1,7 +1,9 @@
 <template>
   <div class="nng-vertical-clues" :style="`grid-template-rows: repeat(${maxLength}, 1fr);`">
     <template v-for="clueGroup in clues">
+      <!-- eslint-disable-next-line vue/no-unused-vars vue/require-v-for-key -->
       <div v-for="clue in maxLength - clueGroup.length" class="nng-square nng-square-empty"/>
+      <!-- eslint-disable-next-line vue/valid-v-for -->
       <Clue v-for="clue in clueGroup" :clue="clue" :colors="colors"/>
     </template>
   </div>

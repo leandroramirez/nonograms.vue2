@@ -1,5 +1,6 @@
 <template>
   <div class="nng-grid" :style="`grid-template-columns: repeat(${width}, 1fr);`">
+    <!-- eslint-disable-next-line vue/require-v-for-key -->
     <svg
       v-for="(value, index) of pixels"
       viewBox="0 0 100 100"
