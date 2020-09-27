@@ -2,7 +2,7 @@
   <div id="app">
     <img class="nng-logo" src="./assets/logo.png">
     <h1 class="nng-title">Nonograms game PoC</h1>
-    <h4 class="nng-subtitle">Built in Vue.js version 2.6</h4>
+    <h4 class="nng-subtitle">Developed using Vue.js version 2.6</h4>
     <router-view/>
   </div>
 </template>

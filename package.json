@@ -38,5 +38,5 @@
   },
   "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
   "keywords": ["vuejs", "nonograms", "nonogram", "vue 2", "vue", "vuejs 2"],
-  "description": "Nonograms game PoC built in Vue version 2.6."
+  "description": "Nonograms game PoC developed using Vue version 2.6."
 }
