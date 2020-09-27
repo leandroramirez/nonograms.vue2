@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="nonogram">
     <h2>Playing "{{ nonogram.name }}" nonogram</h2>
     <Board :nonogram="nonogram"/>
     <router-link :to="{ name: 'home' }">Back to home</router-link>
